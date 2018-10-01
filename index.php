@@ -1,14 +1,12 @@
 <?php
 
-
-function random_color_part()
-{
-   return str_pad( dechex( mt_rand(0,255) ), 2, '0', STR_PAD_LEFT);
-}
-
+// 隨機產生顏色值 (十六進位字串)，這一段程式不是主要的功能
 function random_color()
 {
-   return random_color_part() . random_color_part() . random_color_part();
+   $r = strr_pad( dechex( mt_rand(0,255) ), 2, '0', STR_PAD_LEFT);
+   $g = strr_pad( dechex( mt_rand(0,255) ), 2, '0', STR_PAD_LEFT);
+   $b = strr_pad( dechex( mt_rand(0,255) ), 2, '0', STR_PAD_LEFT);
+   return '#' . $r . $g . $b;
 }
 
 
@@ -16,7 +14,7 @@ function random_color()
 $color = random_color();
 
 $script = <<< HEREDOC
-document.bgColor='{$color}';
+document.body.style.background = '{$color}';
 HEREDOC;
 
 
